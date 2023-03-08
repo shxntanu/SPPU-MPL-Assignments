@@ -6,26 +6,29 @@ len2: equ $-opmsg
 
 section .bss
 str1: resb 10
-leng: resb 1
+leng: resb 2
 
 section .text
 global _start
 
 _start:
 
+                      ; "Enter a string: "
 mov rax,1
 mov rdi, 1
 mov rsi, str
 mov rdx, len
 syscall
 
+                      ; Reading the string
 mov rax,0
 mov rdi, 0
 mov rsi, str1
 mov rdx, 20
 syscall
 
-dec al
+dec al                ; Decrement al to compensate for trailing null character
+mov  rsi , length
 cmp al ,09h
 jbe L1
 

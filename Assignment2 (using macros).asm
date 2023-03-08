@@ -43,10 +43,10 @@ read  string , 100
 
 ; length of input string is stored in al
 
-dec  al               ; Decrement al to compensate for trailing null character
-mov  bl  , al         ; Copy contents of al to bl
-mov  rsi , length     ; mov 'length' base address to rsi
-mov  rcx , 02h        ; reset counter to 0x02
+dec  al                ; Decrement al to compensate for trailing null character
+mov  bl  , al          ; Copy contents of al to bl
+mov  rsi , length      ; mov 'length' base address to rsi
+mov  rcx , 02h         ; reset counter to 0x02
 
 hextoascii:
 rol  bl  , 04          ; rotate left 4 times (i.e. swap nibbles)
